@@ -1,6 +1,6 @@
 # Installation
 
-Our experiments are based on Python 3.8, PyTorch 1.9.0, and CUDA 11.1. 
+Our experiments are based on Python 3.8, PyTorch 1.9.0, and CUDA 11.1.
 Newer version of PyTorch may also work.
 
 ### Installation Outline
@@ -10,6 +10,7 @@ Newer version of PyTorch may also work.
 - Download and install GRiT
 
 ### Installation Example
+
 ```bash
 conda create --name grit python=3.8 -y
 conda activate grit

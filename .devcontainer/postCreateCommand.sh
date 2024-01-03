@@ -25,18 +25,24 @@ source /home/vscode/miniconda3/bin/activate
 conda create -n grit python=3.8 -y
 conda activate grit
 
-# Install Nvidia Cuda Compiler
-conda install -y -c nvidia cuda-compiler
+echo "Installing CUDA..."
+conda install -y -c nvidia cuda-nvcc
 
-pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
-
-# Install detectron2
+echo "Installing detectron2..."
 git clone https://github.com/facebookresearch/detectron2.git
 cd detectron2
 git checkout cc87e7ec
 pip install -e .
 cd ..
 
+echo "Downloading pretrained model..."
+mkdir models
+cd models
+wget https://datarelease.blob.core.windows.net/grit/models/grit_b_densecap_objectdet.pth
+cd ..
+
+echo "Installing requirements..."
+pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
 pip install -r requirements.txt
 
 echo "postCreateCommand.sh completed!"
